@@ -7,6 +7,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const MinifyPlugin = require("babel-minify-webpack-plugin")
 const OptimizeThreePlugin = require('@vxna/optimize-three-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const sass = require('sass')
 const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
@@ -39,7 +40,12 @@ module.exports = {
                 use: [
                   devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                   'css-loader',
-                  'sass-loader',
+                  {
+                    loader: 'sass-loader',
+                    options: {
+                      implementation: sass
+                    }
+                  }
                 ],
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] }

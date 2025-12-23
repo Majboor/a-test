@@ -1,7 +1,7 @@
 const assetData = {
     "jan": {
-        "placeholder-1.mp4": {
-            "caption": "Placeholder 1",
+        "placeholder-1.jpg": {
+            "caption": "Threats and Vulnerability Certificate",
             "link": "",
             "assetNumber": 1
         },

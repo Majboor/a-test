@@ -77,8 +77,10 @@ export default class AssetLoader {
                     if( preload ) {
 
                         assetLoadPromises.push( new Promise( resolve => {
-                            // Use direct URL for placeholder images
-                            if( filename.indexOf('placeholder') !== -1 ) {
+                            // Use specific URL for placeholder-1 (certificate), otherwise use generic placeholder
+                            if( filename === 'placeholder-1.jpg' ) {
+                                imageLoader.load( 'http://164.68.117.31/waleeds.world/Certs/Google_certs/1722937280318.jpeg', texture => this.createImageTexture( texture, month, filename, resolve ) )
+                            } else if( filename.indexOf('placeholder') !== -1 ) {
                                 imageLoader.load( 'http://164.68.117.31/waleeds.world/General_photos/office_vibes/EA0EF5BE-0F4B-43CD-9FFD-F3657AD8E310.jpg', texture => this.createImageTexture( texture, month, filename, resolve ) )
                             } else {
                                 imageLoader.load( `assets/${month}/${filename}`, texture => this.createImageTexture( texture, month, filename, resolve ) )
@@ -87,7 +89,19 @@ export default class AssetLoader {
 
                     } else {
 
-                        if( filename.indexOf('placeholder') !== -1 ) {
+                        if( filename === 'placeholder-1.jpg' ) {
+                            let texture = new THREE.TextureLoader().load( 'http://164.68.117.31/waleeds.world/Certs/Google_certs/1722937280318.jpeg', texture => {
+                                texture.size = new THREE.Vector2( texture.image.width / 2, texture.image.height / 2 )
+                                texture.needsUpdate = true
+                                this.renderer.setTexture2D( texture, 0 )
+                            } )
+                            texture.size = new THREE.Vector2( 10, 10 )
+                            texture.name = `${month}/${filename}`
+                            texture.mediaType = 'image'
+                            texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy()
+                            if( !this.assets.textures[ month ] ) this.assets.textures[ month ] = {}
+                            this.assets.textures[ month ][ filename ] = texture
+                        } else if( filename.indexOf('placeholder') !== -1 ) {
                             let texture = new THREE.TextureLoader().load( 'http://164.68.117.31/waleeds.world/General_photos/office_vibes/EA0EF5BE-0F4B-43CD-9FFD-F3657AD8E310.jpg', texture => {
                                 texture.size = new THREE.Vector2( texture.image.width / 2, texture.image.height / 2 )
                                 texture.needsUpdate = true

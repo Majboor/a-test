@@ -1,6 +1,6 @@
 const assetOrder = {
     "jan": [
-        "placeholder-1.mp4",
+        "placeholder-1.jpg",
         "placeholder-2.jpg",
         "placeholder-3.mp4",
         "placeholder-4.mp4",

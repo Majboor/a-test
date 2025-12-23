@@ -7,7 +7,7 @@ const months = {
         tintColor: 0x1b42d8
     },
     jan: {
-        name: 'JANUARY',
+        name: 'CERTIFICATIONS',
         textColor: 0xf7cf7e,
         bgColor: 0x428884,
         tintColor: 0x428884

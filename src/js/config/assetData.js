@@ -1,452 +1,556 @@
 const assetData = {
     "jan": {
-        "adicolor_ss2018.mp4": {
-            "caption": "Adicolor SS2018 Lookbook Carousel",
-            "link": "https://dribbble.com/shots/4062487-Adicolor-SS2018-Lookbook-Carousel"
+        "placeholder-1.mp4": {
+            "caption": "Placeholder 1",
+            "link": "",
+            "assetNumber": 1
         },
-        "berlin-3.JPG": {
-            "caption": "We got inspired at the Awwwwards conference in Berlin",
-            "link": ""
+        "placeholder-2.jpg": {
+            "caption": "Placeholder 2",
+            "link": "",
+            "assetNumber": 2
         },
-        "cursor.mp4": {
-            "caption": "",
-            "link": "https://dribbble.com/shots/4134375-Cursor"
+        "placeholder-3.mp4": {
+            "caption": "Placeholder 3",
+            "link": "",
+            "assetNumber": 3
         },
-        "dark.mp4": {
-            "caption": "An interaction experiment using multiple parallax layers",
-            "link": "https://dribbble.com/shots/4104832-Dark"
+        "placeholder-4.mp4": {
+            "caption": "Placeholder 4",
+            "link": "",
+            "assetNumber": 4
         },
-        "houseofplants.mp4.mp4": {
-            "caption": "House of Plants concept work",
-            "link": "https://dribbble.com/shots/4147977-House-of-Plants"
+        "placeholder-5.mp4": {
+            "caption": "Placeholder 5",
+            "link": "",
+            "assetNumber": 5
         },
-        "iceland-orig.mp4": {
-            "caption": "Iceland interaction animation",
-            "link": "https://dribbble.com/shots/4131026-Wandr-Iceland-Interaction-Animation"
+        "placeholder-6.mp4": {
+            "caption": "Placeholder 6",
+            "link": "",
+            "assetNumber": 6
         },
-        "iceland_dribbble.jpg": {
-            "caption": "",
-            "link": ""
+        "placeholder-7.jpg": {
+            "caption": "Placeholder 7",
+            "link": "",
+            "assetNumber": 7
         },
-        "nike.mp4": {
-            "caption": "Nike Air Max day spinner ",
-            "link": "https://dribbble.com/shots/4138514-Nike-Air-Max-Day-Spinner"
+        "placeholder-8.mp4": {
+            "caption": "Placeholder 8",
+            "link": "",
+            "assetNumber": 8
         },
-        "roadless.jpg": {
-            "caption": "",
-            "link": ""
+        "placeholder-9.jpg": {
+            "caption": "Placeholder 9",
+            "link": "",
+            "assetNumber": 9
         },
-        "soft-drinks.jpg": {
-            "caption": "3D scenes for our lovely client Rawlings",
-            "link": "https://www.rawlingsbristol.co.uk/"
+        "placeholder-10.jpg": {
+            "caption": "Placeholder 10",
+            "link": "",
+            "assetNumber": 10
         },
-        "tiles.jpg": {
-            "caption": "Some pretty style tiles",
-            "link": "https://dribbble.com/shots/4069928-Mountain-Range-Tiles"
+        "placeholder-11.jpg": {
+            "caption": "Placeholder 11",
+            "link": "",
+            "assetNumber": 11
         }
     },
     "feb": {
-        "camera-culture.jpg": {
-            "caption": "Concept work for the Get The Picture project for IAT",
-            "link": "https://www.getthepicture.tours/"
+        "placeholder-12.jpg": {
+            "caption": "Placeholder 12",
+            "link": "",
+            "assetNumber": 12
         },
-        "ezgif.com-gif-to-mp4 (10).mp4": {
-            "caption": "Experimenting with some hero image transitions",
-            "link": "https://dribbble.com/shots/4128126-Carousel-Transitions"
+        "placeholder-13.mp4": {
+            "caption": "Placeholder 13",
+            "link": "",
+            "assetNumber": 13
         },
-        "ezgif.com-gif-to-mp4 (12).mp4": {
-            "caption": "Entries for the Spaced competition",
-            "link": ""
+        "placeholder-14.mp4": {
+            "caption": "Placeholder 14",
+            "link": "",
+            "assetNumber": 14
         },
-        "fila_dribbble.jpg": {
-            "caption": "Concept for the new Fila clothing range",
-            "link": "https://dribbble.com/shots/4197326-Fila-Spring-Summer"
+        "placeholder-15.jpg": {
+            "caption": "Placeholder 15",
+            "link": "",
+            "assetNumber": 15
         },
-        "fullsize.mp4": {
-            "caption": "Image hover effect experimentation",
-            "link": "https://dribbble.com/shots/4228572-Photo-Gallery-Hover-Idea"
+        "placeholder-16.mp4": {
+            "caption": "Placeholder 16",
+            "link": "",
+            "assetNumber": 16
         },
-        "houseofplants_ar.mp4": {
-            "caption": "House of plants AR app development",
-            "link": ""
+        "placeholder-17.mp4": {
+            "caption": "Placeholder 17",
+            "link": "",
+            "assetNumber": 17
         },
-        "nz.jpg": {
-            "caption": "Surf Guide: New Zealand",
-            "link": ""
+        "placeholder-18.jpg": {
+            "caption": "Placeholder 18",
+            "link": "",
+            "assetNumber": 18
         },
-        "surf_fullsize.mp4": {
-            "caption": "Distortion scroll effects",
-            "link": "https://dribbble.com/shots/4273785-Surf-Guide-Scroll-Distort-Effect"
+        "placeholder-19.mp4": {
+            "caption": "Placeholder 19",
+            "link": "",
+            "assetNumber": 19
         },
-        "surf_mob_fullsize.mp4": {
-            "caption": "",
-            "link": ""
+        "placeholder-20.mp4": {
+            "caption": "Placeholder 20",
+            "link": "",
+            "assetNumber": 20
         }
     },
     "mar": {
-        "When_To_Travel_Event_Loop_1080p.mp4.mp4": {
-            "caption": "When To Travel launched",
-            "link": "https://www.insideasiatours.com/when-to-travel"
+        "placeholder-21.mp4": {
+            "caption": "Placeholder 21",
+            "link": "",
+            "assetNumber": 21
         },
-        "asia-office.jpg": {
-            "caption": "We moved out of our offices on King Street",
-            "link": ""
+        "placeholder-22.jpg": {
+            "caption": "Placeholder 22",
+            "link": "",
+            "assetNumber": 22
         },
-        "certificate-when-to-travel-sotd.jpg": {
-            "caption": "We won SOTD for our 'When to Travel' project for Inside Asia Tours",
-            "link": "https://www.awwwards.com/sites/when-to-travel"
+        "placeholder-23.jpg": {
+            "caption": "Placeholder 23",
+            "link": "",
+            "assetNumber": 23
         },
-        "ezgif.com-gif-to-mp4 (13).mp4": {
-            "caption": "",
-            "link": "https://dribbble.com/shots/4305497-Photo-Transitions"
+        "placeholder-24.mp4": {
+            "caption": "Placeholder 24",
+            "link": "",
+            "assetNumber": 24
         },
-        "ezgif.com-gif-to-mp4 (15).mp4": {
-            "caption": "A little smoke particle simulation",
-            "link": "https://dribbble.com/shots/4381622-3D-Interactions-Series-4-Smoke-Switch"
+        "placeholder-25.mp4": {
+            "caption": "Placeholder 25",
+            "link": "",
+            "assetNumber": 25
         },
-        "kim.jpg": {
-            "caption": "Kim joined our team as an account manager",
-            "link": ""
+        "placeholder-26.jpg": {
+            "caption": "Placeholder 26",
+            "link": "",
+            "assetNumber": 26
         },
-        "office-move.mp4": {
-            "caption": "Turning off the lights for the last time",
-            "link": ""
+        "placeholder-27.mp4": {
+            "caption": "Placeholder 27",
+            "link": "",
+            "assetNumber": 27
         },
-        "phototours.mp4": {
-            "caption": "Photo Tours website launched",
-            "link": ""
+        "placeholder-28.mp4": {
+            "caption": "Placeholder 28",
+            "link": "",
+            "assetNumber": 28
         },
-        "skye_fullsize.mp4": {
-            "caption": "Playing with the footage captured by our new drone",
-            "link": "https://dribbble.com/shots/4416376-Wandr-Isle-of-Skye"
+        "placeholder-29.mp4": {
+            "caption": "Placeholder 29",
+            "link": "",
+            "assetNumber": 29
         },
-        "yosemite.mp4": {
-            "caption": "A little header transition experiment",
-            "link": "https://dribbble.com/shots/4315719-Wandr-Yosemite-Header-Transition"
+        "placeholder-30.mp4": {
+            "caption": "Placeholder 30",
+            "link": "",
+            "assetNumber": 30
         }
     },
     "apr": {
-        "aperture-dribbble.jpg": {
-            "caption": "",
-            "link": ""
+        "placeholder-31.jpg": {
+            "caption": "Placeholder 31",
+            "link": "",
+            "assetNumber": 31
         },
-        "beaches_nodistort.mp4": {
-            "caption": "",
-            "link": "https://dribbble.com/shots/4486525-Wandr-Beaches-Header-Transition"
+        "placeholder-32.mp4": {
+            "caption": "Placeholder 32",
+            "link": "",
+            "assetNumber": 32
         },
-        "colour_01.jpg": {
-            "caption": "",
-            "link": "https://dribbble.com/shots/4477353-Etina-Web-Concept"
+        "placeholder-33.jpg": {
+            "caption": "Placeholder 33",
+            "link": "",
+            "assetNumber": 33
         },
-        "ezgif.com-gif-to-mp4 (16).mp4": {
-            "caption": "Testing out some lighting rigs",
-            "link": "https://dribbble.com/shots/4465601-RayBan-Never-Hide-concept"
+        "placeholder-34.mp4": {
+            "caption": "Placeholder 34",
+            "link": "",
+            "assetNumber": 34
         },
-        "ezgif.com-gif-to-mp4 (17).mp4": {
-            "caption": "WebGL slider",
-            "link": "https://codepen.io/ashthornton/full/KRQbMO/"
+        "placeholder-35.mp4": {
+            "caption": "Placeholder 35",
+            "link": "",
+            "assetNumber": 35
         },
-        "ezgif.com-gif-to-mp4 (18).mp4": {
-            "caption": "Eureka Moment",
-            "link": "https://dribbble.com/shots/4533476-Eureka-Moment"
+        "placeholder-36.mp4": {
+            "caption": "Placeholder 36",
+            "link": "",
+            "assetNumber": 36
         },
-        "its-official-video.mp4": {
-            "caption": "Jack celebrates his job offer!",
-            "link": ""
+        "placeholder-37.mp4": {
+            "caption": "Placeholder 37",
+            "link": "",
+            "assetNumber": 37
         },
-        "skincare.jpg": {
-            "caption": "",
-            "link": ""
+        "placeholder-38.jpg": {
+            "caption": "Placeholder 38",
+            "link": "",
+            "assetNumber": 38
         }
     },
     "may": {
-        "DSC05316.jpg": {
-            "caption": "Enjoying some downtime at Park Güell during OFFF",
-            "link": ""
+        "placeholder-39.jpg": {
+            "caption": "Placeholder 39",
+            "link": "",
+            "assetNumber": 39
         },
-        "botanical.jpg": {
-            "caption": "Branding concepts for Botanical Coffee",
-            "link": "https://www.behance.net/gallery/68848615/Botanical-Coffee-Co"
+        "placeholder-40.jpg": {
+            "caption": "Placeholder 40",
+            "link": "",
+            "assetNumber": 40
         },
-        "botanical_dev.jpg": {
-            "caption": "Final brand tile for Botanical Coffee",
-            "link": "https://www.behance.net/gallery/68848615/Botanical-Coffee-Co"
+        "placeholder-41.jpg": {
+            "caption": "Placeholder 41",
+            "link": "",
+            "assetNumber": 41
         },
-        "cabin_fever.mp4": {
-            "caption": "Wandr: Cabin Fever header transition",
-            "link": ""
+        "placeholder-42.mp4": {
+            "caption": "Placeholder 42",
+            "link": "",
+            "assetNumber": 42
         },
-        "coffeebag_shot.jpg": {
-            "caption": "Final packaging design for Botanical Coffee",
-            "link": "https://www.behance.net/gallery/68848615/Botanical-Coffee-Co"
+        "placeholder-43.jpg": {
+            "caption": "Placeholder 43",
+            "link": "",
+            "assetNumber": 43
         },
-        "mars-fullsize_1.mp4": {
-            "caption": "",
-            "link": ""
+        "placeholder-44.mp4": {
+            "caption": "Placeholder 44",
+            "link": "",
+            "assetNumber": 44
         },
-        "may-off.jpg": {
-            "caption": "We met the talented Ash Willerton at OFFF",
-            "link": ""
+        "placeholder-45.jpg": {
+            "caption": "Placeholder 45",
+            "link": "",
+            "assetNumber": 45
         },
-        "off.jpg": {
-            "caption": "Getting excited for OFFF Festival in Barca",
-            "link": ""
+        "placeholder-46.jpg": {
+            "caption": "Placeholder 46",
+            "link": "",
+            "assetNumber": 46
         }
     },
     "jun": {
-        "GC Port_0046.jpg": {
-            "caption": "Jack Harvatt joined our design team",
-            "link": ""
+        "placeholder-47.mp4": {
+            "caption": "Placeholder 47",
+            "link": "",
+            "assetNumber": 47
         },
-        "GC Port_0666.jpg": {
-            "caption": "Jake came on board as a back-end developer",
-            "link": ""
+        "placeholder-48.jpg": {
+            "caption": "Placeholder 48",
+            "link": "",
+            "assetNumber": 48
         },
-        "its-official-video.mp4": {
-            "caption": "Jack celebrates his job offer!",
-            "link": ""
+        "placeholder-49.png": {
+            "caption": "Placeholder 49",
+            "link": "",
+            "assetNumber": 49
         },
-        "jekka_bottle.png": {
-            "caption": "We created a limited edition bottle for 6 O'Clock Gin",
-            "link": ""
+        "placeholder-50.jpg": {
+            "caption": "Placeholder 50",
+            "link": "",
+            "assetNumber": 50
         },
-        "jekka_bottle_front_label.png": {
-            "caption": "Close up of the Jekka bottle for 6 O'Clock Gin",
-            "link": ""
+        "placeholder-51.png": {
+            "caption": "Placeholder 51",
+            "link": "",
+            "assetNumber": 51
         },
-        "jack.mp4": {
-            "caption": "",
-            "link": ""
+        "placeholder-52.mp4": {
+            "caption": "Placeholder 52",
+            "link": "",
+            "assetNumber": 52
         },
-        "plasticdreams_fullsize.mp4": {
-            "caption": "",
-            "link": ""
+        "placeholder-53.mp4": {
+            "caption": "Placeholder 53",
+            "link": "",
+            "assetNumber": 53
         }
     },
-
-
     "jul": {
-        "05.jpg": {
-            "caption": "R&D Water drop simulation",
-            "link": ""
+        "placeholder-54.jpg": {
+            "caption": "Placeholder 54",
+            "link": "",
+            "assetNumber": 54
         },
-        "6oclockgin (2).mp4": {
-            "caption": "We launched a revamped new site for 6 o'clock Gin",
-            "link": "https://www.6oclockgin.com/"
+        "placeholder-55.mp4": {
+            "caption": "Placeholder 55",
+            "link": "",
+            "assetNumber": 55
         },
-        "luke.jpg": {
-            "caption": "Luke joined the team as a front-end developer",
-            "link": ""
+        "placeholder-56.jpg": {
+            "caption": "Placeholder 56",
+            "link": "",
+            "assetNumber": 56
         },
-        "melt].jpg": {
-            "caption": "Melt Candle Co Branding",
-            "link": "https://dribbble.com/shots/4864742-Melt-Candle-Co"
+        "placeholder-57.jpg": {
+            "caption": "Placeholder 57",
+            "link": "",
+            "assetNumber": 57
         },
-        "natural_wonders.mp4.mp4": {
-            "caption": "Natural Wonders parallax idea",
-            "link": "https://dribbble.com/shots/4873036-Natural-Wonders-Scroll"
+        "placeholder-58.mp4": {
+            "caption": "Placeholder 58",
+            "link": "",
+            "assetNumber": 58
         },
-        "IMG_9709 2.jpg": {
-            "caption": "Team breakfasts full of tasty treats",
-            "link": ""
+        "placeholder-59.jpg": {
+            "caption": "Placeholder 59",
+            "link": "",
+            "assetNumber": 59
         },
-        "sandsoftime.mp4.mp4": {
-            "caption": "Sands of time",
-            "link": "https://dribbble.com/shots/4816509-Load-n-Scroll"
+        "placeholder-60.mp4": {
+            "caption": "Placeholder 60",
+            "link": "",
+            "assetNumber": 60
         }
     },
     "aug": {
-        "1061670554.mp4.mp4": {
-            "caption": "Jack dropped a trailer for his 'Disco' animation",
-            "link": ""
+        "placeholder-61.mp4": {
+            "caption": "Placeholder 61",
+            "link": "",
+            "assetNumber": 61
         },
-        "aug-nala.jpg": {
-            "caption": "Nala joined the team as office pup!",
-            "link": ""
+        "placeholder-62.mp4": {
+            "caption": "Placeholder 62",
+            "link": "",
+            "assetNumber": 62
         },
-        "boatparty.jpg": {
-            "caption": "We drank plenty of cider at our summer party",
-            "link": ""
+        "placeholder-63.jpg": {
+            "caption": "Placeholder 63",
+            "link": "",
+            "assetNumber": 63
         },
-        "cssda-wotd.jpg": {
-            "caption": "We won a CSSDA SOTD for Get the Picture!",
-            "link": "https://cssdesignawards.com/sites/get-the-picture/33487/"
+        "placeholder-64.mp4": {
+            "caption": "Placeholder 64",
+            "link": "",
+            "assetNumber": 64
         },
-        "ezgif.com-gif-to-mp4 (10).mp4": {
-            "caption": "Human Interactions",
-            "link": "https://dribbble.com/shots/5046361-Human-Interactions"
+        "placeholder-65.mp4": {
+            "caption": "Placeholder 65",
+            "link": "",
+            "assetNumber": 65
         },
-        "ezgif.com-gif-to-mp4 (6).mp4": {
-            "caption": "Interactive icons",
-            "link": "https://dribbble.com/shots/4891767-"
+        "placeholder-66.jpg": {
+            "caption": "Placeholder 66",
+            "link": "",
+            "assetNumber": 66
         },
-        "ezgif.com-gif-to-mp4 (7).mp4": {
-            "caption": "Portfolio concept by Asia",
-            "link": "https://dribbble.com/shots/4932443-"
+        "placeholder-67.mp4": {
+            "caption": "Placeholder 67",
+            "link": "",
+            "assetNumber": 67
         },
-        "ezgif.com-gif-to-mp4 (8).mp4": {
-            "caption": "Land Rover concept",
-            "link": "https://dribbble.com/shots/5022977-Land-Rover-Web-Interactions"
+        "placeholder-68.jpg": {
+            "caption": "Placeholder 68",
+            "link": "",
+            "assetNumber": 68
         },
-        "ezgif.com-gif-to-mp4 (9).mp4": {
-            "caption": "Warped menu interactions",
-            "link": "https://dribbble.com/shots/5044951-"
+        "placeholder-69.mp4": {
+            "caption": "Placeholder 69",
+            "link": "",
+            "assetNumber": 69
         },
-        "shapes___lighting.jpg": {
-            "caption": "Shape and lighting study by Dan",
-            "link": ""
+        "placeholder-70.jpg": {
+            "caption": "Placeholder 70",
+            "link": "",
+            "assetNumber": 70
         }
     },
     "sep": {
-        "1.jpg": {
-            "caption": "Renders of David",
-            "link": ""
+        "placeholder-71.jpg": {
+            "caption": "Placeholder 71",
+            "link": "",
+            "assetNumber": 71
         },
-        "asaro-web-live-shot_4x (2).jpg": {
-            "caption": "We launched an immersive new site for Asaro",
-            "link": "https://asaro.co.uk/"
+        "placeholder-72.mp4": {
+            "caption": "Placeholder 72",
+            "link": "",
+            "assetNumber": 72
         },
-        "bunder_fullsize.mp4.mp4": {
-            "caption": "Horiztonal scrolling parallax",
-            "link": "https://dribbble.com/shots/5106773-Horizontal-Parallax-Scroll"
+        "placeholder-73.jpg": {
+            "caption": "Placeholder 73",
+            "link": "",
+            "assetNumber": 73
         },
-        "butterysmoothversion.mp4.mp4": {
-            "caption": "Mobile interactions for the NFL preview we worked on with ESPN",
-            "link": "https://dribbble.com/shots/5239960-ESPN-Mobile-Interactions"
+        "placeholder-74.mp4": {
+            "caption": "Placeholder 74",
+            "link": "",
+            "assetNumber": 74
         },
-        "carhartt_bigboi.mp4.mp4": {
-            "caption": "3D Grid interaction idea",
-            "link": "https://dribbble.com/shots/5122175-Cursor-Interaction-Concept"
+        "placeholder-75.mp4": {
+            "caption": "Placeholder 75",
+            "link": "",
+            "assetNumber": 75
         },
-        "ding_ding.mp4.mp4": {
-            "caption": "Specular Distortions",
-            "link": "https://dribbble.com/shots/5221731-ultracheese"
+        "placeholder-76.mp4": {
+            "caption": "Placeholder 76",
+            "link": "",
+            "assetNumber": 76
         },
-        "ezgif.com-gif-to-mp4 (11).mp4": {
-            "caption": "Prelude rotating Beer",
-            "link": "https://dribbble.com/shots/5088455-Rotatin"
+        "placeholder-77.mp4": {
+            "caption": "Placeholder 77",
+            "link": "",
+            "assetNumber": 77
         },
-        "ezgif.com-gif-to-mp4 (12).mp4": {
-            "caption": "Lucid WebGL interaction concept",
-            "link": "https://dribbble.com/shots/5092605-Displacement-R-D"
+        "placeholder-78.mp4": {
+            "caption": "Placeholder 78",
+            "link": "",
+            "assetNumber": 78
         },
-        "ezgif.com-gif-to-mp4 (13).mp4": {
-            "caption": "Water simulations for Asaro",
-            "link": "https://dribbble.com/shots/5138162-Water-Simulations-R-D"
+        "placeholder-79.mp4": {
+            "caption": "Placeholder 79",
+            "link": "",
+            "assetNumber": 79
         },
-        "ezgif.com-gif-to-mp4 (14).mp4": {
-            "caption": "Studio David",
-            "link": "https://dribbble.com/shots/5263912-Studio-David"
+        "placeholder-80.mp4": {
+            "caption": "Placeholder 80",
+            "link": "",
+            "assetNumber": 80
         },
-        "habital_hifi.mp4.mp4.mp4": {
-            "caption": "Habital",
-            "link": "https://dribbble.com/shots/5313972-Habital-Interiors-Showcase"
+        "placeholder-81.mp4": {
+            "caption": "Placeholder 81",
+            "link": "",
+            "assetNumber": 81
         },
-        "mantra_fullres (1).mp4.mp4": {
-            "caption": "BMTH Mantra Track Preview concept",
-            "link": "https://dribbble.com/shots/5095880-Mantra-Track-Preview"
+        "placeholder-82.mp4": {
+            "caption": "Placeholder 82",
+            "link": "",
+            "assetNumber": 82
         },
-        "nfl_screens_4x.jpg": {
-            "caption": "We worked with ESPN on their NFL Preview",
-            "link": "https://dribbble.com/shots/5213950-ESPN-NFL-Preview-Screens"
+        "placeholder-83.jpg": {
+            "caption": "Placeholder 83",
+            "link": "",
+            "assetNumber": 83
         }
     },
     "oct": {
-        "comp_1_1.mp4 (1).mp4": {
-            "caption": "Kyoto Black Lookbook with coded demo by Jesper Landberg",
-            "link": "https://dribbble.com/shots/5475422-Kyoto-Black-Look-book-Live-Demo"
+        "placeholder-84.mp4": {
+            "caption": "Placeholder 84",
+            "link": "",
+            "assetNumber": 84
         },
-        "comp_1_1.mp4.mp4": {
-            "caption": "Trying out the new Dribbble Mp4 upload feature",
-            "link": "https://dribbble.com/shots/5452617-NMD-Cursor-and-Scrolling-Interactions"
+        "placeholder-85.mp4": {
+            "caption": "Placeholder 85",
+            "link": "",
+            "assetNumber": 85
         },
-        "ezgif.com-gif-to-mp4 (15).mp4": {
-            "caption": "Adaptive text",
-            "link": "https://dribbble.com/shots/5361227-"
+        "placeholder-86.mp4": {
+            "caption": "Placeholder 86",
+            "link": "",
+            "assetNumber": 86
         },
-        "ezgif.com-gif-to-mp4 (16).mp4": {
-            "caption": "Spooky interactions",
-            "link": "https://dribbble.com/shots/5394685-Right-in-the-Spooks"
+        "placeholder-87.mp4": {
+            "caption": "Placeholder 87",
+            "link": "",
+            "assetNumber": 87
         },
-        "ezgif.com-gif-to-mp4 (17).mp4": {
-            "caption": "Ghosts and Ghouls interaction exploration",
-            "link": "https://dribbble.com/shots/5435034-Ghosts-Ghouls"
+        "placeholder-88.mp4": {
+            "caption": "Placeholder 88",
+            "link": "",
+            "assetNumber": 88
         },
-        "fwawwward-asaro.jpg": {
-            "caption": "Asaro won Awwwards and FWA SOTD!",
-            "link": ""
+        "placeholder-89.jpg": {
+            "caption": "Placeholder 89",
+            "link": "",
+            "assetNumber": 89
         },
-        "kingdoms-fullsize (1).mp4.mp4": {
-            "caption": "Floral music player concept",
-            "link": "https://dribbble.com/shots/5380278-Maribou-State-Player-Interface"
+        "placeholder-90.mp4": {
+            "caption": "Placeholder 90",
+            "link": "",
+            "assetNumber": 90
         },
-        "sign.jpg": {
-            "caption": "Ash Willerton worked his magic on our studio door",
-            "link": ""
+        "placeholder-91.jpg": {
+            "caption": "Placeholder 91",
+            "link": "",
+            "assetNumber": 91
         }
     },
     "nov": {
-        "DSC08088.jpg": {
-            "caption": "We created the packaging for a unique, limited edition 5 Year aged Sloe Gin with 6 o'clock Gin",
-            "link": ""
+        "placeholder-92.jpg": {
+            "caption": "Placeholder 92",
+            "link": "",
+            "assetNumber": 92
         },
-        "adobe_xd_mockup.jpg": {
-            "caption": "Dan's entry to the Adobe XD competition on Dribbble",
-            "link": "https://dribbble.com/shots/5556268-BSB-x-AdobeXD"
+        "placeholder-93.jpg": {
+            "caption": "Placeholder 93",
+            "link": "",
+            "assetNumber": 93
         },
-        "comp_1.mp4.mp4": {
-            "caption": "An unused concept from the new Epicurrence site",
-            "link": "https://dribbble.com/shots/5575499-Epic-Unused"
+        "placeholder-94.mp4": {
+            "caption": "Placeholder 94",
+            "link": "",
+            "assetNumber": 94
         },
-        "comp_1_11.mp4.mp4": {
-            "caption": "Paper slider concept",
-            "link": "https://dribbble.com/shots/5517376-Paper-Fashion-Slider"
+        "placeholder-95.mp4": {
+            "caption": "Placeholder 95",
+            "link": "",
+            "assetNumber": 95
         },
-        "comp_1_3.mp4.mp4": {
-            "caption": "Nath's first work using Cinema 4D",
-            "link": "https://dribbble.com/shots/5579163-Egyptian-Dynasties-Transitions"
+        "placeholder-96.mp4": {
+            "caption": "Placeholder 96",
+            "link": "",
+            "assetNumber": 96
         },
-        "ezgif.com-gif-to-mp4 (18).mp4": {
-            "caption": "Kinetic type explorations",
-            "link": "https://dribbble.com/shots/5497074-"
+        "placeholder-97.mp4": {
+            "caption": "Placeholder 97",
+            "link": "",
+            "assetNumber": 97
         },
-        "full_animation.mp4.mp4": {
-            "caption": "Pastel Paradise",
-            "link": "https://dribbble.com/shots/5532273-Colour-Selector-Pastel-Paradise"
+        "placeholder-98.mp4": {
+            "caption": "Placeholder 98",
+            "link": "",
+            "assetNumber": 98
         },
-        "iat-webdesigner.jpg": {
-            "caption": "We had a 6 page feature in Web Designer Magazine for 'When to Travel'",
-            "link": ""
+        "placeholder-99.jpg": {
+            "caption": "Placeholder 99",
+            "link": "",
+            "assetNumber": 99
         },
-        "kikk.jpg": {
-            "caption": "We headed out to Belgium to experience the KIKK festival",
-            "link": ""
+        "placeholder-100.jpg": {
+            "caption": "Placeholder 100",
+            "link": "",
+            "assetNumber": 100
         }
     },
     "dec": {
-        "comp_1.mp4 (1).mp4": {
-            "caption": "Hover reveal effect concept",
-            "link": "https://dribbble.com/shots/5727121-Mont-Blanc-Text-Reveal"
+        "placeholder-101.mp4": {
+            "caption": "Placeholder 101",
+            "link": "",
+            "assetNumber": 101
         },
-        "comp_1.mp4.mp4": {
-            "caption": "Battle at the Berrics app idea",
-            "link": "https://dribbble.com/shots/5658836-BATB-11-Mobile-Concept"
+        "placeholder-102.mp4": {
+            "caption": "Placeholder 102",
+            "link": "",
+            "assetNumber": 102
         },
-        "comp_1_1.mp4.mp4": {
-            "caption": "Nath starting learning X-particles and created this concept for Pantone colour of the year",
-            "link": "https://dribbble.com/shots/5681842-Pantone-Color-of-the-Year-Living-Coral"
+        "placeholder-103.mp4": {
+            "caption": "Placeholder 103",
+            "link": "",
+            "assetNumber": 103
         },
-        "comp_1_2.mp4.mp4": {
-            "caption": "We visualised a Battle at the Berrics website",
-            "link": "https://dribbble.com/shots/5645974-BATB-11-Concept"
+        "placeholder-104.mp4": {
+            "caption": "Placeholder 104",
+            "link": "",
+            "assetNumber": 104
         },
-        "studio_of_the_year_nom.jpg": {
-            "caption": "We were honoured to be nominated for Studio of the Year by Awwwards",
-            "link": ""
+        "placeholder-105.jpg": {
+            "caption": "Placeholder 105",
+            "link": "",
+            "assetNumber": 105
         },
-        "xmas.mp4": {
-            "caption": "Too many shots at our Christmas party",
-            "link": ""
+        "placeholder-106.mp4": {
+            "caption": "Placeholder 106",
+            "link": "",
+            "assetNumber": 106
         }
     }
 };

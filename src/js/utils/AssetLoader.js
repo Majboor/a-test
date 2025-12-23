@@ -49,7 +49,14 @@ export default class AssetLoader {
                     video.setAttribute('webkit-playsinline', true)
                     video.setAttribute('playsinline', true)
                     video.preload = 'metadata'
-                    video.src = `assets/${month}/${filename}`
+                    
+                    // Use external video URL for placeholder videos
+                    if( filename.indexOf('placeholder') !== -1 ) {
+                        video.src = 'http://164.68.117.31/waleeds.world/General_photos/office_vibes/VIDEO-2024-02-08-01-59-23.mp4'
+                    } else {
+                        video.src = `assets/${month}/${filename}`
+                    }
+                    
                     document.body.appendChild( video )
                     video.load() // must call after setting/changing source
 
@@ -70,12 +77,31 @@ export default class AssetLoader {
                     if( preload ) {
 
                         assetLoadPromises.push( new Promise( resolve => {
-                            imageLoader.load( `assets/${month}/${filename}`, texture => this.createImageTexture( texture, month, filename, resolve ) )
+                            // Use direct URL for placeholder images
+                            if( filename.indexOf('placeholder') !== -1 ) {
+                                imageLoader.load( 'http://164.68.117.31/waleeds.world/General_photos/office_vibes/EA0EF5BE-0F4B-43CD-9FFD-F3657AD8E310.jpg', texture => this.createImageTexture( texture, month, filename, resolve ) )
+                            } else {
+                                imageLoader.load( `assets/${month}/${filename}`, texture => this.createImageTexture( texture, month, filename, resolve ) )
+                            }
                         }))
 
                     } else {
 
-                        this.createImageTexture( false, month, filename, false )
+                        if( filename.indexOf('placeholder') !== -1 ) {
+                            let texture = new THREE.TextureLoader().load( 'http://164.68.117.31/waleeds.world/General_photos/office_vibes/EA0EF5BE-0F4B-43CD-9FFD-F3657AD8E310.jpg', texture => {
+                                texture.size = new THREE.Vector2( texture.image.width / 2, texture.image.height / 2 )
+                                texture.needsUpdate = true
+                                this.renderer.setTexture2D( texture, 0 )
+                            } )
+                            texture.size = new THREE.Vector2( 10, 10 )
+                            texture.name = `${month}/${filename}`
+                            texture.mediaType = 'image'
+                            texture.anisotropy = this.renderer.capabilities.getMaxAnisotropy()
+                            if( !this.assets.textures[ month ] ) this.assets.textures[ month ] = {}
+                            this.assets.textures[ month ][ filename ] = texture
+                        } else {
+                            this.createImageTexture( false, month, filename, false )
+                        }
 
                     }
 
@@ -217,5 +243,6 @@ export default class AssetLoader {
         this.assets.textures[ month ][ filename ] = texture
 
     }
+
 
 }

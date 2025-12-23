@@ -36,12 +36,49 @@ export default class Item extends THREE.Group {
         })
 
         this.mesh = new THREE.Mesh( this.geometry, this.material )
-        this.mesh.scale.set( this.texture.size.x, this.texture.size.y, 1 )
+        
+        // Calculate proper size maintaining aspect ratio and fitting within container
+        const maxSize = 700 // Maximum size for assets
+        const aspectRatio = this.texture.size.x / this.texture.size.y
+        let displayWidth = this.texture.size.x
+        let displayHeight = this.texture.size.y
+        
+        // Scale down if exceeds max size while maintaining aspect ratio
+        if( displayWidth > maxSize || displayHeight > maxSize ) {
+            if( displayWidth > displayHeight ) {
+                displayWidth = maxSize
+                displayHeight = maxSize / aspectRatio
+            } else {
+                displayHeight = maxSize
+                displayWidth = maxSize * aspectRatio
+            }
+        }
+        
+        this.mesh.scale.set( displayWidth, displayHeight, 1 )
 
+        // Store original onUpdate if it exists
+        this.originalOnUpdate = this.texture.onUpdate
+        
         // updates size of meshes after texture has been loaded
         this.texture.onUpdate = () => {
-            if( this.mesh.scale.x !== this.texture.size.x && this.mesh.scale.y !== this.texture.size.y ) {
-                this.mesh.scale.set( this.texture.size.x, this.texture.size.y, 1 )
+            const maxSize = 700
+            const aspectRatio = this.texture.size.x / this.texture.size.y
+            let displayWidth = this.texture.size.x
+            let displayHeight = this.texture.size.y
+            
+            if( displayWidth > maxSize || displayHeight > maxSize ) {
+                if( displayWidth > displayHeight ) {
+                    displayWidth = maxSize
+                    displayHeight = maxSize / aspectRatio
+                } else {
+                    displayHeight = maxSize
+                    displayWidth = maxSize * aspectRatio
+                }
+            }
+            
+            if( this.mesh.scale.x !== displayWidth && this.mesh.scale.y !== displayHeight ) {
+                this.mesh.scale.set( displayWidth, displayHeight, 1 )
+                this.updateOverlayPositions()
                 this.texture.onUpdate = null
             }
         }
@@ -60,6 +97,7 @@ export default class Item extends THREE.Group {
         this.add( this.mesh )
 
         this.addCaption()
+        this.addOverlays()
 
         this.timeline.itemMeshes.push( this.mesh )
 
@@ -67,6 +105,67 @@ export default class Item extends THREE.Group {
             this.timeline.videoItems.push( this.mesh )
         }
 
+    }
+
+    addOverlays() {
+        
+        // Add asset number overlay
+        if( this.data && this.data.assetNumber ) {
+            let numberGeom = new THREE.TextGeometry( this.data.assetNumber.toString(), {
+                font: this.timeline.assets.fonts['SuisseIntl-Bold'],
+                size: 24,
+                height: 0,
+                curveSegments: 4
+            } ).center()
+            
+            let numberMat = new THREE.MeshBasicMaterial( { 
+                color: 0xFFFFFF, 
+                transparent: true,
+                opacity: 0.9
+            } )
+            
+            this.numberOverlay = new THREE.Mesh( numberGeom, numberMat )
+            this.updateOverlayPositions()
+            this.add( this.numberOverlay )
+        }
+        
+        // Add "VIDEO" overlay for video assets
+        if( this.texture.mediaType === 'video' ) {
+            let videoGeom = new THREE.TextGeometry( 'VIDEO', {
+                font: this.timeline.assets.fonts['SuisseIntl-Bold'],
+                size: 20,
+                height: 0,
+                curveSegments: 4
+            } ).center()
+            
+            let videoMat = new THREE.MeshBasicMaterial( { 
+                color: 0xFF0000, 
+                transparent: true,
+                opacity: 0.9
+            } )
+            
+            this.videoOverlay = new THREE.Mesh( videoGeom, videoMat )
+            this.updateOverlayPositions()
+            this.add( this.videoOverlay )
+        }
+        
+    }
+
+    updateOverlayPositions() {
+        if( this.numberOverlay ) {
+            this.numberOverlay.position.set( 
+                -this.mesh.scale.x / 2 + 30, 
+                this.mesh.scale.y / 2 - 30, 
+                1 
+            )
+        }
+        if( this.videoOverlay ) {
+            this.videoOverlay.position.set( 
+                this.mesh.scale.x / 2 - 50, 
+                this.mesh.scale.y / 2 - 30, 
+                1 
+            )
+        }
     }
 
     addCaption() {

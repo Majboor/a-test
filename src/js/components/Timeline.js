@@ -320,7 +320,12 @@ export default class Timeline {
         if( this.c.isMobile ) {
             let texture = item.mesh.material.uniforms.texture.value
             if( texture.mediaType === 'video' ) {
-                texture.image.src = 'assets/' + texture.name
+                // Use external URL for placeholder videos
+                if( texture.name.indexOf('placeholder') !== -1 ) {
+                    texture.image.src = 'http://164.68.117.31/waleeds.world/General_photos/office_vibes/VIDEO-2024-02-08-01-59-23.mp4'
+                } else {
+                    texture.image.src = 'assets/' + texture.name
+                }
                 texture.image.play()
             }
         }

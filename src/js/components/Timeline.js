@@ -339,7 +339,7 @@ export default class Timeline {
 
         if( this.c.isMobile ) {
             let texture = item.mesh.material.uniforms.texture.value
-            if( texture.mediaType === 'video' ) {
+            if( texture && texture.mediaType === 'video' && texture.image && typeof texture.image.play === 'function' ) {
                 // Use the full URL directly from texture.name (now stores full URL)
                 if( texture.name && texture.name.startsWith('http') ) {
                     texture.image.src = texture.name
@@ -474,7 +474,7 @@ export default class Timeline {
 
             if( this.c.isMobile ) {
                 let texture = this.itemOpen.mesh.material.uniforms.texture.value
-                if( texture.mediaType === 'video' ) {
+                if( texture && texture.mediaType === 'video' && texture.image && typeof texture.image.pause === 'function' ) {
                     texture.image.pause()
                     texture.image.src = ''
                     texture.image.load()
@@ -903,13 +903,30 @@ export default class Timeline {
 
         for( let i = 0; i < this.videoCount; i++ ) {
 
-            if( this.frustum.intersectsObject( this.videoItems[ i ] ) && this.videoItems[ i ].material.uniforms.texture.value.image.paused ) {
-                this.videoItems[ i ].material.uniforms.texture.value.image.play()
+            // Safety check: ensure video item, texture, and video element exist
+            if( !this.videoItems[ i ] || 
+                !this.videoItems[ i ].material || 
+                !this.videoItems[ i ].material.uniforms || 
+                !this.videoItems[ i ].material.uniforms.texture || 
+                !this.videoItems[ i ].material.uniforms.texture.value ||
+                !this.videoItems[ i ].material.uniforms.texture.value.image ) {
+                continue
+            }
+
+            const videoElement = this.videoItems[ i ].material.uniforms.texture.value.image
+
+            // Check if it's actually a video element (has play/pause methods)
+            if( typeof videoElement.play !== 'function' || typeof videoElement.pause !== 'function' ) {
+                continue
+            }
+
+            if( this.frustum.intersectsObject( this.videoItems[ i ] ) && videoElement.paused ) {
+                videoElement.play()
                 continue
             }
             
-            if ( !this.frustum.intersectsObject( this.videoItems[ i ] ) && !this.videoItems[ i ].material.uniforms.texture.value.image.paused ) {
-                this.videoItems[ i ].material.uniforms.texture.value.image.pause()
+            if ( !this.frustum.intersectsObject( this.videoItems[ i ] ) && !videoElement.paused ) {
+                videoElement.pause()
             }
 
         }

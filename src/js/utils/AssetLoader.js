@@ -92,7 +92,7 @@ export default class AssetLoader {
                     // Only set crossOrigin for external URLs, not local files
                     const assetUrl = this.getAssetUrl( month, filename )
                     if( assetUrl.startsWith('http') ) {
-                        video.crossOrigin = 'anonymous'
+                    video.crossOrigin = 'anonymous'
                     }
                     
                     video.setAttribute('muted', true)
@@ -119,7 +119,7 @@ export default class AssetLoader {
                     } else {
                         // Wait a bit for the video element to be ready before loading
                         setTimeout(() => {
-                            video.load() // must call after setting/changing source
+                    video.load() // must call after setting/changing source
                         }, 10)
                     }
 
@@ -244,8 +244,8 @@ export default class AssetLoader {
             this.updateAssetDisplay(`Retrying: ${this.currentAsset}`)
         }
 
-        // Longer timeout for local videos, shorter for external
-        const timeoutDuration = isLocalVideo ? 120000 : 60000 // 2 min for local, 1 min for external
+        // Longer timeout for local videos, much longer for external (live site may have slow connections)
+        const timeoutDuration = isLocalVideo ? 120000 : 180000 // 2 min for local, 3 min for external videos
 
         // Add timeout to prevent infinite waiting
         const timeout = setTimeout(() => {
@@ -276,6 +276,7 @@ export default class AssetLoader {
             video.onloadedmetadata = null
             video.onprogress = null
             video.oncanplay = null
+            video.onloadstart = null
         }
 
         let successCalled = false
@@ -401,10 +402,37 @@ export default class AssetLoader {
             video.oncanplaythrough = onSuccess
             video.onerror = onError
             
+            // Track progress for external videos
+            video.onprogress = () => {
+                if( video.buffered.length > 0 ) {
+                    const bufferedEnd = video.buffered.end( video.buffered.length - 1 )
+                    const duration = video.duration
+                    if( duration > 0 ) {
+                        const percentLoaded = Math.round( ( bufferedEnd / duration ) * 100 )
+                        if( percentLoaded > 0 && percentLoaded < 100 ) {
+                            this.updateAssetDisplay(`Loading video: ${percentLoaded}% - ${this.currentAsset}`)
+                        }
+                    }
+                }
+            }
+            
             // Fallback: also listen to loadeddata
             video.onloadeddata = () => {
                 if( video.readyState >= 3 ) { // HAVE_FUTURE_DATA
                     onSuccess()
+                }
+            }
+            
+            // Also listen to loadedmetadata for earlier detection
+            video.onloadedmetadata = () => {
+                if( video.readyState >= 1 && video.videoWidth > 0 && video.videoHeight > 0 ) {
+                    // If we have metadata and dimensions, we can proceed
+                    // This helps with slow connections
+                    setTimeout(() => {
+                        if( !successCalled && video.readyState >= 2 ) {
+                            onSuccess()
+                        }
+                    }, 500)
                 }
             }
             
@@ -563,7 +591,7 @@ export default class AssetLoader {
             video.oncanplaythrough = () => {
                 if( video.videoWidth && video.videoHeight ) {
                     texture.size = new THREE.Vector2( video.videoWidth / 2, video.videoHeight / 2 )
-                    texture.needsUpdate = true
+                texture.needsUpdate = true
                 }
                 video.oncanplaythrough = null
             }

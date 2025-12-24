@@ -162,6 +162,26 @@ export default class Timeline {
 
     createTimeline() {
 
+        // Safety check: ensure renderer and scene are initialized
+        if( !this.renderer || !this.renderer.domElement ) {
+            console.error('Renderer not initialized when createTimeline called')
+            console.error('Renderer:', this.renderer)
+            // Try to initialize if not done
+            if( !this.renderer ) {
+                this.init()
+            }
+            // If still not initialized, wait and retry
+            if( !this.renderer || !this.renderer.domElement ) {
+                console.error('Renderer still not initialized, cannot create timeline')
+                return
+            }
+        }
+
+        if( !this.scene ) {
+            console.error('Scene not initialized when createTimeline called')
+            return
+        }
+
         this.timeline = new THREE.Group()
         this.scene.add( this.timeline )
             
@@ -285,6 +305,23 @@ export default class Timeline {
         this.scene.add( this.linkGroup )
 
         console.log('RENDER')
+        
+        // Ensure renderer is fully initialized before setting up listeners
+        if( !this.renderer || !this.renderer.domElement ) {
+            console.error('Renderer not initialized in createTimeline, waiting...')
+            setTimeout(() => {
+                if( this.renderer && this.renderer.domElement ) {
+                    this.animate()
+                    this.initCursorListeners()
+                    this.initListeners()
+                    document.body.classList.add('ready')
+                } else {
+                    console.error('Renderer still not initialized after delay')
+                }
+            }, 100)
+            return
+        }
+        
         this.animate()
         this.initCursorListeners()
         this.initListeners()
@@ -1007,6 +1044,12 @@ export default class Timeline {
 
     initListeners() {
 
+        // Safety check: ensure renderer is initialized
+        if( !this.renderer || !this.renderer.domElement ) {
+            console.error('Renderer not initialized when initListeners called')
+            return
+        }
+
         this.resize = this.resize.bind( this )
         this.scroll = this.scroll.bind( this )
         this.mouseDown = this.mouseDown.bind( this )
@@ -1064,6 +1107,12 @@ export default class Timeline {
     }
 
     preventPullToRefresh() {
+        // Safety check: ensure renderer is initialized
+        if( !this.renderer || !this.renderer.domElement ) {
+            console.warn('Renderer not initialized when preventPullToRefresh called')
+            return
+        }
+
         var prevent = false;
     
         this.renderer.domElement.addEventListener('touchstart', function(e){

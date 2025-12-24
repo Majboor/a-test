@@ -36,9 +36,11 @@ export default class AssetLoader {
         }
         // Check if we have a mapping for this asset
         if( assetMapping[ month ] && assetMapping[ month ][ filename ] ) {
-            // Properly encode the path (handles spaces and special characters)
-            const pathParts = assetMapping[ month ][ filename ].split('/')
-            const encodedPath = pathParts.map(part => encodeURIComponent(part)).join('/')
+            // Use encodeURI for the full path (preserves slashes, encodes spaces and special chars)
+            // This is better for URL paths than encodeURIComponent which encodes slashes too
+            const assetPath = assetMapping[ month ][ filename ]
+            // First try: use encodeURI which preserves / but encodes spaces
+            const encodedPath = encodeURI(assetPath)
             const mappedUrl = this.baseUrl + encodedPath
             console.log(`Using mapped URL for ${month}/${filename}: ${mappedUrl}`)
             return mappedUrl
@@ -98,7 +100,6 @@ export default class AssetLoader {
                     video.setAttribute('muted', true)
                     video.setAttribute('webkit-playsinline', true)
                     video.setAttribute('playsinline', true)
-                    video.preload = 'metadata'
                     
                     // Special handling for local videos
                     const isLocalVideo = month === 'intro' || month === 'end'
@@ -107,6 +108,9 @@ export default class AssetLoader {
                         video.preload = 'auto'
                         console.log(`Loading LOCAL video: ${assetUrl} (month: ${month}, filename: ${filename})`)
                     } else {
+                        // For external videos, use 'auto' to actually load the video data
+                        // 'metadata' is too conservative and causes timeouts for large videos
+                        video.preload = 'auto'
                         console.log(`Loading video: ${assetUrl} (month: ${month}, filename: ${filename})`)
                     }
                     
@@ -245,7 +249,8 @@ export default class AssetLoader {
         }
 
         // Longer timeout for local videos, much longer for external (live site may have slow connections)
-        const timeoutDuration = isLocalVideo ? 120000 : 180000 // 2 min for local, 3 min for external videos
+        // Increased timeout for external videos since they're large files
+        const timeoutDuration = isLocalVideo ? 120000 : 240000 // 2 min for local, 4 min for external videos
 
         // Add timeout to prevent infinite waiting
         const timeout = setTimeout(() => {
@@ -398,9 +403,38 @@ export default class AssetLoader {
             }, 200) // Check every 200ms
 
         } else if( !this.isMobile) {
-            // Desktop: use canplaythrough
-            video.oncanplaythrough = onSuccess
+            // Desktop: use less strict events for external videos
+            // oncanplaythrough is too strict for large videos - use oncanplay or onloadeddata instead
             video.onerror = onError
+            
+            // Primary: use oncanplay (less strict than oncanplaythrough, fires earlier)
+            video.oncanplay = () => {
+                if( !successCalled && video.readyState >= 2 && video.videoWidth > 0 && video.videoHeight > 0 ) {
+                    console.log(`Video can play: ${video.src}`)
+                    onSuccess()
+                }
+            }
+            
+            // Fallback: use onloadeddata if oncanplay doesn't fire
+            video.onloadeddata = () => {
+                if( !successCalled && video.readyState >= 3 && video.videoWidth > 0 && video.videoHeight > 0 ) {
+                    console.log(`Video data loaded: ${video.src}`)
+                    onSuccess()
+                }
+            }
+            
+            // Also listen to loadedmetadata for earlier detection (single handler, combined logic)
+            video.onloadedmetadata = () => {
+                if( !successCalled && video.readyState >= 1 && video.videoWidth > 0 && video.videoHeight > 0 ) {
+                    // If we have metadata and dimensions, wait a bit for more data then proceed
+                    setTimeout(() => {
+                        if( !successCalled && video.readyState >= 2 && video.duration > 0 ) {
+                            console.log(`Video metadata loaded, proceeding: ${video.src}`)
+                            onSuccess()
+                        }
+                    }, 1000) // Give it 1 second to load more data
+                }
+            }
             
             // Track progress for external videos
             video.onprogress = () => {
@@ -412,37 +446,21 @@ export default class AssetLoader {
                         if( percentLoaded > 0 && percentLoaded < 100 ) {
                             this.updateAssetDisplay(`Loading video: ${percentLoaded}% - ${this.currentAsset}`)
                         }
-                    }
-                }
-            }
-            
-            // Fallback: also listen to loadeddata
-            video.onloadeddata = () => {
-                if( video.readyState >= 3 ) { // HAVE_FUTURE_DATA
-                    onSuccess()
-                }
-            }
-            
-            // Also listen to loadedmetadata for earlier detection
-            video.onloadedmetadata = () => {
-                if( video.readyState >= 1 && video.videoWidth > 0 && video.videoHeight > 0 ) {
-                    // If we have metadata and dimensions, we can proceed
-                    // This helps with slow connections
-                    setTimeout(() => {
-                        if( !successCalled && video.readyState >= 2 ) {
+                        // If we have at least 5% buffered and metadata, proceed (for large videos)
+                        // This prevents timeouts on very large videos
+                        if( !successCalled && percentLoaded >= 5 && video.readyState >= 2 && video.videoWidth > 0 ) {
+                            console.log(`Video has ${percentLoaded}% buffered, proceeding: ${video.src}`)
                             onSuccess()
                         }
-                    }, 500)
+                    }
                 }
             }
             
-            // Also listen to loadedmetadata as fallback
-            video.onloadedmetadata = () => {
-                if( video.readyState >= 2 ) { // HAVE_METADATA
-                    // For some videos, metadata might be enough
-                    if( video.duration > 0 && video.videoWidth > 0 ) {
-                        onSuccess()
-                    }
+            // Final fallback: also try oncanplaythrough (but don't rely on it)
+            video.oncanplaythrough = () => {
+                if( !successCalled ) {
+                    console.log(`Video can play through: ${video.src}`)
+                    onSuccess()
                 }
             }
         } else {

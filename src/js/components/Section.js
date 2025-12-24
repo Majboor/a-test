@@ -125,12 +125,27 @@ export default class Section extends THREE.Group {
         this.add( serifText )
 
         let geometry = new THREE.PlaneGeometry( 1, 1 )
+        
+        // Get texture, create placeholder if missing
+        let waveTexture = this.timeline.assets.textures['end'] && this.timeline.assets.textures['end'][ 'wave.mp4' ]
+        if( !waveTexture ) {
+            console.warn('wave.mp4 texture not found, creating placeholder')
+            // Create a simple placeholder
+            const canvas = document.createElement('canvas')
+            canvas.width = 1
+            canvas.height = 1
+            const ctx = canvas.getContext('2d')
+            ctx.fillStyle = '#808080'
+            ctx.fillRect(0, 0, 1, 1)
+            waveTexture = new THREE.CanvasTexture(canvas)
+        }
+        
         let material = new THREE.ShaderMaterial({
             uniforms: {
                 fogColor: { type: "c", value: this.timeline.scene.fog.color },
                 fogNear: { type: "f", value: this.timeline.scene.fog.near },
                 fogFar: { type: "f", value: this.timeline.scene.fog.far },
-                texture: { type: 't', value: this.timeline.assets.textures['end'][ 'wave.mp4' ] }
+                texture: { type: 't', value: waveTexture }
             },
             fragmentShader: greenscreen,
             vertexShader: vert,
@@ -163,7 +178,17 @@ export default class Section extends THREE.Group {
         this.whoosh.add( this.circle )
 
         let texture = new THREE.TextureLoader().load( 'images/arrowdown.png' )
-        texture.anisotropy = this.timeline.renderer.capabilities.getMaxAnisotropy()
+        // Safely get anisotropy - check if timeline and renderer exist
+        try {
+            if( this.timeline && this.timeline.renderer && this.timeline.renderer.capabilities ) {
+                texture.anisotropy = this.timeline.renderer.capabilities.getMaxAnisotropy()
+            } else {
+                texture.anisotropy = 1 // Default value if renderer not available
+            }
+        } catch( error ) {
+            console.warn( 'Could not get renderer capabilities, using default anisotropy:', error )
+            texture.anisotropy = 1
+        }
         texture.magFilter = texture.minFilter = THREE.LinearFilter
         let material = new THREE.MeshBasicMaterial( { map: texture, transparent: true, side: THREE.DoubleSide, depthWrite: false } )
         let geom = new THREE.PlaneGeometry( 1, 1 )

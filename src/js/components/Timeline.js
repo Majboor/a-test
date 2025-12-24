@@ -9,6 +9,7 @@ import Konami from 'konami'
 import months from '../config/months'
 import assetOrder from '../config/assetOrder'
 import assetData from '../config/assetData'
+import assetMapping from '../config/assetMapping'
 
 export default class Timeline {
 
@@ -180,34 +181,47 @@ export default class Timeline {
         for( let month in this.months ) {
 
             this.sections[ month ] = new Section({
-                timeline: timeline,
+                timeline: this,
                 section: month
             })
 
             if( month !== 'intro' && month !== 'end' ) {
 
-                let itemIndex = 0, id
+                // Skip if assetList for this month doesn't exist
+                if( !this.assetList[ month ] || !Array.isArray( this.assetList[ month ] ) ) {
+                    console.warn(`No asset list found for month: ${month}, skipping items`)
+                } else {
+                    let itemIndex = 0, id
 
-                // add items
-                this.assetList[ month ].forEach( filename => {
+                    // add items
+                    this.assetList[ month ].forEach( filename => {
 
-                    id = `${month}/${filename}`
+                        id = `${month}/${filename}`
+                        
+                        const texture = this.assets.textures[ month ][ filename ]
+                        
+                        // Skip if texture is null or undefined
+                        if( !texture ) {
+                            console.warn(`Skipping item creation for ${id} - texture is null`)
+                            return
+                        }
 
-                    this.items[id] = new Item({
-                        timeline: this,
-                        texture: this.assets.textures[ month ][ filename ],
-                        data: this.assetData[ month ][ filename ],
-                        month: month,
-                        itemIndex: itemIndex,
-                        itemIndexTotal: itemIndexTotal
+                        this.items[id] = new Item({
+                            timeline: this,
+                            texture: texture,
+                            data: this.assetData[ month ][ filename ],
+                            month: month,
+                            itemIndex: itemIndex,
+                            itemIndexTotal: itemIndexTotal
+                        })
+
+                        this.sections[ month ].add( this.items[id] )
+
+                        itemIndex++
+                        itemIndexTotal++
+
                     })
-
-                    this.sections[ month ].add( this.items[id] )
-
-                    itemIndex++
-                    itemIndexTotal++
-
-                })
+                }
 
             }
 
@@ -229,7 +243,7 @@ export default class Timeline {
         this.videoCount = this.videoItems.length
 
         this.contactSection = new Section({
-            timeline: timeline,
+            timeline: this,
             section: 'contact'
         })
         this.contactSection.visible = false
@@ -320,10 +334,11 @@ export default class Timeline {
         if( this.c.isMobile ) {
             let texture = item.mesh.material.uniforms.texture.value
             if( texture.mediaType === 'video' ) {
-                // Use external URL for placeholder videos
-                if( texture.name.indexOf('placeholder') !== -1 ) {
-                    texture.image.src = 'http://164.68.117.31/waleeds.world/General_photos/office_vibes/VIDEO-2024-02-08-01-59-23.mp4'
+                // Use the full URL directly from texture.name (now stores full URL)
+                if( texture.name && texture.name.startsWith('http') ) {
+                    texture.image.src = texture.name
                 } else {
+                    // Fallback for old format
                     texture.image.src = 'assets/' + texture.name
                 }
                 texture.image.play()

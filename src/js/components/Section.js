@@ -36,7 +36,7 @@ export default class Section extends THREE.Group {
 
     createIntroSection() {
 
-        let sansTextGeom = new THREE.TextGeometry( 'YEAR IN REVIEW', {
+        let sansTextGeom = new THREE.TextGeometry( 'A LOOK INSIDE', {
             font: this.timeline.assets.fonts['SuisseIntl-Bold'],
             size: 60,
             height: 0,
@@ -46,9 +46,9 @@ export default class Section extends THREE.Group {
         let sansText = new THREE.Mesh( sansTextGeom, this.timeline.textMat )
         this.add( sansText )
 
-        let serifTextGeom = new THREE.TextGeometry( '2018', {
+        let serifTextGeom = new THREE.TextGeometry( 'MY WORLD', {
             font: this.timeline.assets.fonts['Schnyder_Edit Outline'],
-            size: 640,
+            size: 480, // Further reduced to make it less prominent and more subtle
             height: 0,
             curveSegments: 15
         } ).center()
@@ -80,7 +80,7 @@ export default class Section extends THREE.Group {
         this.circle.scale.set( 200, 200, 1 )
         this.badge.add( this.circle )
 
-        let serifTextGeom = new THREE.TextGeometry( '2018-19', {
+        let serifTextGeom = new THREE.TextGeometry( 'NOW', {
             font: this.timeline.assets.fonts['Schnyder L'],
             size: 26,
             height: 0,
@@ -93,8 +93,8 @@ export default class Section extends THREE.Group {
         serifText.position.set( 0, 0, 1 )
         this.badge.add( serifText )
 
-        this.badge.position.set( 0, 0, 50 )
-        this.badge.position.y = this.timeline.c.size.w < 600 ? -this.timeline.c.size.h + 90 : -this.timeline.c.size.h / 2 + 90
+        // Position badge near center, below "A LOOK INSIDE" text, near the hand
+        this.badge.position.set( 0, -80, 50 ) // Moved up from bottom to be visible near center
         if( this.timeline.c.size.w < 600 ) this.badge.scale.set( 1.5, 1.5, 1 )
 
         this.add( this.badge )
@@ -220,7 +220,7 @@ export default class Section extends THREE.Group {
         sansText.position.set( 0, 60, 0 )
         this.add( sansText )
 
-        let lineOneGeom = new THREE.TextGeometry( "Let’s make 2019 just as memorable with more", {
+        let lineOneGeom = new THREE.TextGeometry( "Say hello. Let's see where it goes.", {
             font: this.timeline.assets.fonts['Schnyder L'],
             size: 30,
             height: 0,
@@ -231,18 +231,9 @@ export default class Section extends THREE.Group {
         lineOne.position.set( 0, 0, 0 )
         this.add( lineOne )
 
-        let lineTwoGeom = new THREE.TextGeometry( "amazing talent and exciting new projects.", {
-            font: this.timeline.assets.fonts['Schnyder L'],
-            size: 30,
-            height: 0,
-            curveSegments: 6
-        } ).center()
+        // Removed lineTwo - we only need one line now
 
-        let lineTwo = new THREE.Mesh( lineTwoGeom, this.timeline.contactTextMat )
-        lineTwo.position.set( 0, -45, 0 )
-        this.add( lineTwo )
-
-        let emailGeom = new THREE.TextGeometry( "hello@craftedbygc.com", {
+        let emailGeom = new THREE.TextGeometry( "hello@waleeds.world", {
             font: this.timeline.assets.fonts['Schnyder L'],
             size: 36,
             height: 0,
@@ -267,7 +258,7 @@ export default class Section extends THREE.Group {
         )
         this.linkBox.position.set( 0, -140, 1 )
         this.linkBox.onClick = () => {
-            window.open( 'mailto:hello@craftedbygc.com', '_blank' )
+            window.open( 'mailto:hello@waleeds.world', '_blank' )
         }
         this.add( this.linkBox )
 

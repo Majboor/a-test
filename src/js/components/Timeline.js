@@ -168,7 +168,13 @@ export default class Timeline {
         this.textMat = new THREE.MeshBasicMaterial( { color: 0x1b42d8, transparent: true } )
         this.captionTextMat = new THREE.MeshBasicMaterial( { color: 0x1b42d8, transparent: true, opacity: 0, visible: false } )
         this.linkUnderlineMat = new THREE.MeshBasicMaterial( { color: 0x1b42d8, transparent: true, opacity: 0, visible: false } )
-        this.textOutlineMat = new THREE.MeshBasicMaterial( { color: 0x1b42d8, transparent: true } )
+        // Outline material - very low opacity to create outline-only effect (no fill)
+        this.textOutlineMat = new THREE.MeshBasicMaterial( { 
+            color: 0x1b42d8, 
+            transparent: true, 
+            opacity: 0.2, // Very low opacity to simulate outline-only (was 1.0, making it too prominent)
+            side: THREE.DoubleSide
+        } )
         this.contactTextMat = new THREE.MeshBasicMaterial( { color: 0xFFFFFF } )
 
         this.sections = {}
@@ -954,7 +960,10 @@ export default class Timeline {
             this.sections['end'].circle.rotation.z += 0.005
         }
 
-        this.renderer.render(this.scene, this.camera)
+        // Guard clause: only render if renderer exists
+        if( this.renderer && this.scene && this.camera ) {
+            this.renderer.render(this.scene, this.camera)
+        }
 
     }
 

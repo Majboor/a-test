@@ -20,7 +20,7 @@ export default class AssetLoader {
         this.totalAssets = 0
         this.loadedAssets = 0
         this.currentAsset = ''
-        this.baseUrl = 'http://164.68.117.31/waleeds.world/'
+        this.baseUrl = 'https://dev.heyharoon.io/waleeds.world/'
 
     }
 
